@@ -1,0 +1,45 @@
+<p>
+  Pipeline Demo
+</p>
+<p>
+  My Birthday is {{birthday | date:'yyyy-MM-dd HH:mm:ss'}}
+  <!-- My Birthday is {{birthday | date | uppercase | lowercase}} -->
+</p>
+<!-- "2.1-4" = At least 2 digits before dot and at least 1 digit after dot and at most 4 digits after dot. -->
+<p>Pi: {{pi | number:'2.1-4'}}</p> 
+<!-- This pipe return value * parameter -->
+<p>Testing customized pipe {{size | multiple:'2'}}</p>
+
+<!-- <p>
+  Reactive programming Demo
+</p>
+<input [formControl]="searchInput"> -->
+
+<!-- <p>
+  bind works!
+</p>
+<!- Template local variable with "#myField" -->
+<!-- <input #myField (keyup)="onKey(myField.value)">   -->
+
+<!-- <input (keyup)="onKey($event)"> -->
+<!-- <input [(ngModel)]="name"> {{name}} -->
+<!-- <div [ngStyle]="divStyle">Web Page</div> -->
+<!-- <div [style.font-size.em]="isDev ? 3 : 1">Web Page</div> -->
+<!-- <div [style.color]="isDev ? 'red' : 'blue'">Web Page</div> -->
+<!-- <div [ngClass]="divClass">Web Page</div> -->
+<!-- <div class="a b" [class.c]="isBig">Web Page</div> -->
+<!-- <div [class]="divClass">Web Page</div> -->
+<!-- Dom binding -->
+<!-- <button (click)="doOnClick($event)">Click Me</button> -->
+<!-- <img [src]="imgUrl">
+<br>
+<img src="{{imgUrl}}"> -->
+
+<!-- <input value="Tom" (input)="doOnInput($event)">
+<button>Click Me</button> -->
+
+<!-- HTML attribute binding -->
+<!-- <table>
+  <tr><td [attr.colspan]="size">Web</td></tr>
+</table> -->
+
