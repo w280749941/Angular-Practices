@@ -1,0 +1,19 @@
+<!-- <div>
+  Parent component
+</div>
+<div>
+  <input type="text" placeholder="Please enter stock code" [(ngModel)]="stock">
+  <app-order [stockCode]="stock" [amount]="100"></app-order>
+</div> -->
+
+<!-- This piece of code will emit and receive stock price change. -->
+<!-- <app-price-quote (lastPrice)="priceQuoteHandler($event)"></app-price-quote>
+<div>
+  This is outside price quote component. 
+  Stock code is {{priceQuote.stockCode}}
+  Stock price is {{priceQuote.lastPrice | number:'2.2-2'}}
+</div> -->
+
+<!-- Man in the middle method of passing params, it receives emiting event(PriceQuote) then pass it into app-order component -->
+<app-price-quote (buy)="buyHandler($event)"></app-price-quote>
+<app-order [priceQuote]="priceQuote"></app-order>
