@@ -1,0 +1,47 @@
+<!-- <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+  <div ngModelGroup="userInfo">
+      <div>User Name: <input #username ngModel name="username" type="text"></div>
+      <div>Phone Number: <input type="text"></div>
+  </div>
+  <div>Password: <input type="password"></div>
+  <div>Confirm Password: <input type="password"></div>
+  <button type="submit">Register</button>
+</form>
+<div>
+  {{myForm.value | json}}
+</div>
+
+<div>
+  {{username.value}}
+</div> -->
+<!-- <form></form> is equivalent to <div ng-form=""></div> -->
+<!-- ngNoFrom -> angular will not control the form -->
+
+<!-- novalidate cancels the default html validation -->
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value, myForm.valid)" novalidate>
+  <div>User Name: <input ngModel required minlength="6" name="username" type="text" (input)="onMobileInput(myForm)"></div>
+  <div [hidden]="usernameValid || usernameUntouched">
+    <div [hidden]="!myForm.hasError('required', 'username')">
+        Username is required
+    </div>
+    <div [hidden]="!myForm.hasError('minlength', 'username')">
+        Username min length is 6
+    </div>
+  </div>
+
+  <div>Phone Number: <input ngModel appMobile name="mobile" type="number"></div>
+  <div [hidden]="!myForm.hasError('mobile', 'mobile')">
+      Please enter proper format phone number
+  </div>
+  <div ngModelGroup="passwordsGroup" appEqualValidator>
+    <div>Password: <input ngModel minlength="6" name="password" type="password"></div>
+    <div [hidden]="!myForm.hasError('minlength', ['passwordsGroup','password'])">
+        Password min length is 6
+    </div>
+    <div>Confirm Password: <input ngModel name="pconfirm" type="password"></div>
+    <div [hidden]="!myForm.hasError('equal', 'passwordsGroup')">
+        {{myForm.getError('equal','passwordsGroup')?.descxxx}}
+    </div>
+  </div>
+  <button type="submit">Register</button>
+</form>

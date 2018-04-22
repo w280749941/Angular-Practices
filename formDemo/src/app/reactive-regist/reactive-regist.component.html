@@ -1,0 +1,38 @@
+<form [formGroup]="formModel" (submit)="onSubmit()">
+  <div>User Name: <input [class.hasError]="formModel.get('username').invalid && formModel.get('username').touched" type="text" formControlName="username"></div>
+  <!-- untouched disable validation if user never click on that input -->
+  <div [hidden]="formModel.get('username').valid || formModel.get('username').untouched">
+    <div [hidden]="!formModel.hasError('required', 'username')">
+      Username is required
+    </div>
+    <div [hidden]="!formModel.hasError('minlength', 'username')">
+      Username min length is 6
+    </div>
+  </div>
+
+  <div>Phone Number: <input type="text" formControlName="mobile"></div>
+  <!-- Only show validation message if input invalid or changed (touched doens't activate this) -->
+  <div [hidden]="formModel.get('mobile').valid || formModel.get('mobile').pristine">
+    <div [hidden]="!formModel.hasError('mobile', 'mobile')">
+        Please enter proper format phone number
+    </div>
+  </div>
+  <div [hidden]="!formModel.get('mobile').pending">
+    Validating phone now
+  </div>
+
+  <div formGroupName="passwordsGroup">
+      <div>Password: <input type="password" formControlName="password"></div>
+      <div [hidden]="!formModel.hasError('minlength', ['passwordsGroup','password'])">
+          Password min length is 6
+      </div>
+      <div>Confirm Password: <input type="password" formControlName="pconfirm"></div>
+      <div [hidden]="!formModel.hasError('equal', 'passwordsGroup')">
+          {{formModel.getError('equal','passwordsGroup')?.descxxx}}
+      </div>
+  </div>
+  <button type="submit">Register</button>
+</form>
+<div>
+  {{formModel.status}}
+</div>
